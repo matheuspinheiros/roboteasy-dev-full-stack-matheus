@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Component
 public class JWTUtil {
@@ -60,6 +61,15 @@ public class JWTUtil {
         } catch (Exception e) {
             return null;
         }
+    }
+
+    public String getUsernameFromRequest(HttpServletRequest request) {
+        String authHeader = request.getHeader("Authorization");
+        if (authHeader != null && authHeader.startsWith("Bearer ")) {
+            String token = authHeader.substring(7);
+            return getUsuario(token); // você já deve ter esse método
+        }
+        throw new RuntimeException("Token JWT ausente ou inválido");
     }
 
 }
