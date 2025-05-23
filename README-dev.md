@@ -1,4 +1,47 @@
 # **📌 Desafio Técnico – Desenvolvedor Full Stack**
+
+Adicionei um arquivo separado com instruções de execução, para não sobrescrever o README principal do projeto.
+
+## 🚀 Tecnologias Utilizadas
+
+###  Backend
+- **Java 17**
+- **Spring Boot 3.4.5**
+- **Spring Security 6.2.5**
+- **JWT (com biblioteca JJWT)**
+- **WebSocket com STOMP**
+- **Lombok**
+- **PostgreSQL** (via Docker)
+
+###  Frontend
+- **Vue.js**
+- **Axios** (para requisições HTTP)
+- **StompJS** (para conexão WebSocket via protocolo STOMP)
+
+---
+
+## 📦 Pré-requisitos
+
+- [Docker](https://www.docker.com/) instalado
+- [Docker Compose](https://docs.docker.com/compose/) instalado
+
+---
+
+## 🔧 Como rodar o projeto (Docker)
+
+1. Clone este repositório
+
+2. Execute o Docker compose: docker compose up --build
+
+3. Acesse o frontend no navegador: http://localhost:3000
+
+## 🔧 Informações adicionais
+
+Containers e portas:
+Frontend: 3000
+Backend: 8082
+PostgreSQL: 5433
+
 ## **Objetivo**
 Criar um **chat em tempo real** com autenticação de usuários, listagem de usuários disponíveis e trocas de mensagens.
 
