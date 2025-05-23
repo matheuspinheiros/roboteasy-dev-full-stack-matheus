@@ -1,6 +1,7 @@
 package com.api_desafio_chat.API.Desafio.de.Chat.Virtual.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,15 @@ public class UsuarioService {
         return usuarioRepository.findByOnlineTrue().stream()
                 .map(x -> new UsuarioResponseDTO(x.getId(), x.getNome(), x.isOnline())) // lambda
                 .toList();
+    }
+
+    public void setUsuarioOnline(String username, boolean online) {
+        Optional<Usuario> usuarioOpt = usuarioRepository.findByNome(username);
+        if (usuarioOpt.isPresent()) {
+            Usuario usuario = usuarioOpt.get();
+            usuario.setOnline(online);
+            usuarioRepository.save(usuario);
+        }
     }
 
 }

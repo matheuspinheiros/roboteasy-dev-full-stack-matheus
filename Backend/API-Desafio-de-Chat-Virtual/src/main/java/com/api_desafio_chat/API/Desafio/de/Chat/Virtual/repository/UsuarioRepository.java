@@ -12,6 +12,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 @Repository
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     Optional<Usuario> findByNome(String nome);
-    List<Usuario> findByOnlineTrue();
     
+    List<Usuario> findByOnlineTrue();
 }

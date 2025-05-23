@@ -40,6 +40,7 @@ public class SecurityConfig {
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/auth").permitAll()
                 .requestMatchers("/api/auth/registro").permitAll()
+                .requestMatchers("/ws/**").permitAll()
                 .anyRequest().authenticated())
             .addFilter(new JWTAuthenticationFilter(authManager, jwtUtil))
             .addFilterBefore(new JWTAuthorizationFilter(jwtUtil, userDetailsService), UsernamePasswordAuthenticationFilter.class)

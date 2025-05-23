@@ -1,0 +1,49 @@
+version: "3.8"
+
+services:
+  postgres:
+    image: postgres:15
+    container_name: postgres-chat
+    environment:
+      POSTGRES_USER: matheusps
+      POSTGRES_PASSWORD: M@t372128
+      POSTGRES_DB: apichat
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - rede-chat
+
+  backend:
+    build:
+      context: ./Backend/API-Desafio-de-Chat-Virtual
+      dockerfile: Dockerfile
+    container_name: spring-backend
+    ports:
+      - "8082:8082"
+    depends_on:
+      - postgres
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres-chat:5432/apichat
+      SPRING_DATASOURCE_USERNAME: matheusps
+      SPRING_DATASOURCE_PASSWORD: M@t372128
+    networks:
+      - rede-chat
+
+  frontend:
+    build:
+      context: ./Frontend/front-end-chat
+      dockerfile: Dockerfile
+    container_name: vue-frontend
+    ports:
+      - "3000:80"
+    networks:
+      - rede-chat
+
+volumes:
+  pgdata:
+
+networks:
+  rede-chat:
