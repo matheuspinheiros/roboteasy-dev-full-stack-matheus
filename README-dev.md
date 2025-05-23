@@ -35,6 +35,9 @@ Adicionei um arquivo separado com instruções de execução, para não sobrescr
 
 3. Acesse o frontend no navegador: http://localhost:3000
 
+4. Frontend utiliza SessionStorage para armazenar o token
+   é necessário abrir duas janelas e criar duas contas diferentes para conversar
+
 ## 🔧 Informações adicionais
 
 Containers e portas:
