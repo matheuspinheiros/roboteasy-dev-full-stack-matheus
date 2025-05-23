@@ -51,7 +51,7 @@ export default {
         this.$router.push({ name: 'Chat', params: { destinatario } });
       },
       logout() {
-          fetch('http://localhost:8080/api/usuarios/logout', {
+          fetch('http://localhost:8082/api/usuarios/logout', {
             method: 'POST',
             headers: {
               Authorization: sessionStorage.getItem('token'),
